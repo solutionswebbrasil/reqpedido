@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Requisições de Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Requisição de Produtos</h1>
+                <div class="ticket-info">
+                    <div id="ticketNumber"></div>
+                    <div id="currentDateTime"></div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <!-- Dados do Atendente -->
+                <div class="input-group">
+                    <div class="input-with-icon">
+                        <input type="text" id="attendantName" placeholder="Nome do Atendente" required>
+                    </div>
+                </div>
+
+                <!-- Dados do Cliente -->
+                <div class="input-group">
+                    <div class="form-grid">
+                        <input type="text" id="clientName" placeholder="Nome do Cliente" required>
+                        <input type="text" id="cnpj" placeholder="CNPJ" required>
+                        <input type="text" id="contactPerson" placeholder="Contato Responsável" required>
+                        <input type="tel" id="phoneNumber" placeholder="Telefone">
+                    </div>
+                </div>
+
+                <!-- Endereço de Entrega -->
+                <div class="input-group">
+                    <div class="form-grid">
+                        <div class="input-with-icon">
+                            <input type="text" id="cep" placeholder="CEP" maxlength="9" required>
+                            <div id="cepLoader" class="loader hidden"></div>
+                        </div>
+                        <input type="text" id="street" placeholder="Rua" required readonly>
+                        <input type="text" id="number" placeholder="Número" required>
+                        <input type="text" id="complement" placeholder="Complemento">
+                        <input type="text" id="neighborhood" placeholder="Bairro" required readonly>
+                        <input type="text" id="city" placeholder="Cidade" readonly>
+                        <input type="text" id="state" placeholder="Estado" readonly>
+                    </div>
+                    <div id="cepError" class="error-message hidden"></div>
+                </div>
+
+                <!-- Busca de Produtos -->
+                <div class="input-group">
+                    <div class="input-with-icon">
+                        <input type="text" id="productSearch" placeholder="Digite o código do produto">
+                    </div>
+                    <div id="productsList" class="products-list hidden"></div>
+                </div>
+
+                <!-- Produtos Selecionados -->
+                <div id="selectedProducts" class="selected-products hidden">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="selectedProductsList">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Campo de Observação -->
+                <div class="input-group">
+                    <textarea id="observation" placeholder="Observações" rows="4"></textarea>
+                </div>
+
+                <!-- Botão de Envio -->
+                <div class="button-group">
+                    <button id="submitButton" class="submit-button">Gerar Requisição</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
